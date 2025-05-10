@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.8s ease;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+label, select, input, textarea, button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+input, select, textarea {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Hover and focus effect */
+input:hover, select:hover, textarea:hover, input:focus, select:focus, textarea:focus {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Button Styling */
+button {
+  background-color: #6C63FF;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+/* Button Hover & Active Effect */
+button:hover {
+  background-color: #574b90;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  form {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  input, select, textarea, button {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile | Sanzzy</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a button {
+      background-color: transparent;
+      border: 2px solid #764ba2;
+      color: #764ba2;
+      padding: 8px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    nav a button:hover {
+      background-color: #764ba2;
+      color: white;
+    }
+
+    .profile-card {
+      background: rgba(118, 75, 162, 0.1);
+      border: 1px solid #764ba2;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(118, 75, 162, 0.3);
+      text-align: center;
+      max-width: 500px;
+      margin-top: 120px;
+      animation: popIn 0.8s ease-out;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      color: #764ba2;
+    }
+
+    .profile-card p {
+      margin: 0.5rem 0;
+      opacity: 0.9;
+    }
+
+    .social-icons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.6rem;
+      border: 1px solid #764ba2;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: #764ba2;
+      transform: scale(1.2);
+    }
+
+    .back-home {
+      margin-top: 2rem;
+      background-color: transparent;
+      border: 2px solid #764ba2;
+      color: #764ba2;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .back-home:hover {
+      background-color: #764ba2;
+      color: white;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      color: #aaa;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <nav>
+    <a href="/home"><button>🏠 Home</button></a>
+    <a href="/tools"><button>🛠 Converter</button></a>
+    <a href="/profile"><button style="background:#764ba2; color:white;">👤 Profile</button></a>
+    <a href="#"><button>ℹ️ About</button></a>
+  </nav>
+
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <h1>👤 About Me</h1>
+    <p><strong>Name:</strong> Sanzzy</p>
+    <p><strong>Email:</strong> sanzzy@gmail.com</p>
+
+    <div class="social-icons">
+      <a href="https://www.instagram.com/inoobody_/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/Sanzzy111" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:sanzzy@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <button class="back-home" onclick="window.location.href='/home'">⬅ Back to Home</button>
+  </div>
+
+  <footer>
+    <p>© 2025 Dibuat Pakai Hati Yang Tulus ❤️ | Sanzzy</p>
+  </footer>
+</body>
+</html>

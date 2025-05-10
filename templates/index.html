@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universal File Converter</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .fade-out {
+      animation: fadeOut 0.3s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    .nav-top {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+
+    .nav-top a {
+      background-color: #ffffff22;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .nav-top a:hover {
+      background-color: #ffffff44;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          document.body.classList.add("fade-out");
+          setTimeout(() => window.location = link.href, 300);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="nav-top">
+    <a href="/home">⬅ Back to Home</a>
+    <a href="/profile">👤 Profile</a>
+  </div>
+
+  <h1>Universal File Converter & Text Creator</h1>
+
+  <form action="/tools" method="POST" enctype="multipart/form-data">
+    <label for="file">Choose File</label>
+    <input type="file" name="file" id="file" required>
+
+    <label for="from">Convert from:</label>
+    <select name="from" id="from">
+      <option value="pdf">PDF</option>
+      <option value="docx">DOCX</option>
+      <option value="txt">TXT</option>
+      <option value="jpg">JPG</option>
+      <option value="png">PNG</option>
+    </select>
+
+    <label for="to">Convert to:</label>
+    <select name="to" id="to">
+      <option value="pdf">PDF</option>
+      <option value="docx">DOCX</option>
+      <option value="txt">TXT</option>
+      <option value="jpg">JPG</option>
+      <option value="png">PNG</option>
+    </select>
+
+    <button type="submit">Convert File</button>
+  </form>
+
+  <form action="/create-text" method="POST">
+    <label for="text">Create Text File</label>
+    <textarea name="text" id="text" rows="6" placeholder="Write your content here..." required></textarea>
+
+    <label for="filename">Filename</label>
+    <input type="text" name="filename" id="filename" placeholder="example.txt" required>
+
+    <button type="submit">Save as File</button>
+  </form>
+</body>
+</html>

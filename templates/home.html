@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Sanzzy Creation</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      animation: fadeInBody 0.6s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      position: absolute;
+      left: 10%;
+      top: 30%;
+    }
+
+    header img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #764ba2;
+      margin-right: 1rem;
+      animation: popIn 1s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #764ba2;
+      margin-bottom: 0.5rem;
+    }
+
+    p.description {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+
+    nav {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      display: flex;
+      gap: 1rem;
+      animation: slideFade 1s ease forwards;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 12px 24px;
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #764ba2;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    nav a button i {
+      font-size: 18px;
+    }
+
+    nav a button:hover {
+      background-color: #764ba2;
+      color: #0d0d0d;
+    }
+
+    footer {
+      color: #aaa;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+    }
+
+    @keyframes slideFade {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        left: 5%;
+      }
+
+      header img {
+        width: 150px;
+        height: 150px;
+      }
+
+      nav {
+        top: 50%;
+        right: 5%;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: flex-start;
+      }
+
+      nav a button {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        left: 0;
+        justify-content: center;
+      }
+
+      nav {
+        top: 70%;
+        right: 5%;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      header img {
+        width: 120px;
+        height: 120px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      p.description {
+        font-size: 1rem;
+      }
+
+      nav a button {
+        font-size: 12px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/static/images/profile.jpg" alt="Sanzzy Profile Image" />
+    <div>
+      <h1>Hi, It's Sanzzy</h1>
+      <p class="description">Masih jauh dari sempurna, tapi Tetap terus berjalan!.</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="/home"><button><i class="fas fa-home"></i> Home</button></a>
+    <a href="/tools"><button><i class="fas fa-wrench"></i> Tools</button></a>
+    <a href="/profile"><button><i class="fas fa-user"></i> My Profile</button></a>
+    <a href="/about"><button><i class="fas fa-info-circle"></i> About</button></a>
+    <a href="/social"><button><i class="fas fa-link"></i> Social Media</button></a>
+  </nav>
+
+  <footer>
+    <p>© 2025 Dibuat Pakai Hati Yang Tulus ❤️<br>Sanzzy</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools | Sanzzy Creation</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      animation: slideIn 0.6s ease-in-out;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+      background-color: #0f0f0f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      text-decoration: none;
+    }
+
+    nav button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 2px solid #764ba2;
+      color: #764ba2;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    nav button:hover {
+      background-color: #764ba2;
+      color: white;
+    }
+
+    h1, p {
+      text-align: center;
+    }
+
+    .section {
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .toggle-button {
+      background-color: #764ba2;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-button:hover {
+      background-color: #5e3e9e;
+    }
+
+    .form-container {
+      background: #1c1c1c;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      max-height: 1000px;
+      opacity: 1;
+    }
+
+    .form-container.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding: 0;
+      margin-top: 0;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #764ba2;
+      border-radius: 8px;
+      background: #2c2c2c;
+      color: white;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    button[type="submit"] {
+      background-color: #764ba2;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #5e3e9e;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 3px solid #fff;
+      border-top: 3px solid #764ba2;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+    }
+
+    .loading .spinner {
+      display: inline-block;
+    }
+
+    .loading button {
+      background-color: #aaa !important;
+      cursor: not-allowed;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes spin {
+      0% { transform: translateY(-50%) rotate(0deg); }
+      100% { transform: translateY(-50%) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="/home"><button><i class="fas fa-home"></i> Home</button></a>
+    <a href="/tools"><button><i class="fas fa-wrench"></i> Tools</button></a>
+    <a href="/profile"><button><i class="fas fa-user"></i> Profile</button></a>
+    <a href="/about"><button><i class="fas fa-info-circle"></i> About</button></a>
+    <a href="/social"><button><i class="fas fa-link"></i> Social</button></a>
+  </nav>
+
+  <h1>File Converter & Creator</h1>
+  <p>Konversi file atau buat dokumen dari teks dengan mudah</p>
+
+  <!-- Section: Konversi File -->
+  <div class="section">
+    <button class="toggle-button">➤ Konversi File</button>
+    <div class="form-container hidden">
+      <form action="/convert" method="POST" enctype="multipart/form-data" onsubmit="showSpinner(this)">
+        <h3>Konversi File</h3>
+        <input type="file" name="file" required>
+        <select name="from" required>
+          <option value="pdf">PDF</option>
+          <option value="docx">DOCX</option>
+          <option value="txt">TXT</option>
+          <option value="jpg">JPG</option>
+          <option value="png">PNG</option>
+        </select>
+        <select name="to" required>
+          <option value="pdf">PDF</option>
+          <option value="docx">DOCX</option>
+          <option value="txt">TXT</option>
+          <option value="jpg">JPG</option>
+          <option value="png">PNG</option>
+        </select>
+        <button type="submit">Convert <div class="spinner"></div></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Section: Buat File -->
+  <div class="section">
+    <button class="toggle-button">➤ Buat File Baru</button>
+    <div class="form-container hidden">
+      <form action="/create-text" method="POST" onsubmit="showSpinner(this)">
+        <h3>Buat File Baru</h3>
+        <textarea name="text" rows="6" placeholder="Ketik konten kamu di sini..." required></textarea>
+        <input type="text" name="filename" placeholder="Nama file (tanpa ekstensi)" required>
+        <select name="extension" required>
+          <option value="txt">TXT</option>
+          <option value="py">Python (.py)</option>
+          <option value="js">JavaScript (.js)</option>
+          <option value="html">HTML (.html)</option>
+          <option value="css">CSS (.css)</option>
+          <option value="java">Java (.java)</option>
+          <option value="cpp">C++ (.cpp)</option>
+          <option value="json">JSON (.json)</option>
+          <option value="pdf">PDF (.pdf)</option>
+          <option value="docx">DOCX (.docx)</option>
+        </select>
+        <button type="submit">Create File <div class="spinner"></div></button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Dibuat Pakai Hati Yang Tulus ❤️ | Sanzzy</p>
+  </footer>
+
+  <script>
+    function showSpinner(form) {
+      const button = form.querySelector('button');
+      form.classList.add('loading');
+      button.disabled = true;
+    }
+
+    // Toggle buka/tutup form
+    const toggleButtons = document.querySelectorAll('.toggle-button');
+    toggleButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const container = btn.nextElementSibling;
+        container.classList.toggle('hidden');
+        btn.textContent = container.classList.contains('hidden')
+          ? '➤ ' + btn.textContent.slice(2)
+          : '▼ ' + btn.textContent.slice(2);
+      });
+    });
+  </script>
+
+</body>
+</html>
